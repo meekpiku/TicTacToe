@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let boardClickable = true;
 
     boxes.forEach(e => {
-        e.innerHTML = "";
+        e.innerHTML = '';
         e.addEventListener("click", () => {
             if (!isGameOver && boardClickable && e.innerHTML === "") {
                 e.innerHTML = turn;
@@ -136,6 +136,10 @@ function Win(){
 
     ]
 
+    let weirdConditions = [
+        [6,1], [4,11],[18,25],[23,28]
+    ];
+
     
     for (let i = 0; i < winConditions.length; i++) {
         let v0 = boxes[winConditions[i][0]].innerHTML;
@@ -147,6 +151,19 @@ function Win(){
             for (let j = 0; j < 3; j++) {
                 boxes[winConditions[i][j]].style.backgroundColor = "#FF2E63";
                 boxes[winConditions[i][j]].style.color = "#000";
+            }
+            return true; 
+        }
+    }
+    for (let i = 0; i < weirdConditions.length; i++) {
+        let z0 = boxes[weirdConditions[i][0]].innerHTML;
+        let z1 = boxes[weirdConditions[i][1]].innerHTML;
+
+        if (z0 !== "" && z0 === z1 ) {
+            // Highlight the winning cells
+            for (let j = 0; j < 2; j++) {
+                boxes[weirdConditions[i][j]].style.backgroundColor = "#FF2E63";
+                boxes[weirdConditions[i][j]].style.color = "#000";
             }
             return true; 
         }
@@ -220,7 +237,7 @@ nextRoundButton.addEventListener("click", () => {
 
 //AI -> gameSign[0], Human -> gameSign[1]
 
-playerXScore = 5;
+playerXScore = 0;
 playerOScore = 0;
 var gameSign = ["X", "O"];
 var gameAreas = document.querySelectorAll(".area");
