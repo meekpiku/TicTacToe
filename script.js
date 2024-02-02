@@ -359,12 +359,12 @@ function nextPlayer() {
   } else if (checkWinner() == gameSign[0]) {
     nextRoundButton.style.display = "inline";
     playerXScore++;
-    document.querySelector("#results").innerHTML ="1 Point for Player O";
+    document.querySelector("#results").innerHTML ="1 Point for Player X";
     // document.querySelector(".turn-status").innerHTML = "Computer Won";
   } else if (checkWinner() == gameSign[1]) {
     nextRoundButton.style.display = "inline";
     playerOScore++
-    document.querySelector("#results").innerHTML ="1 Point for Player X";
+    document.querySelector("#results").innerHTML ="1 Point for Player O";
     // document.querySelector(".turn-status").innerHTML = "You Won";
     currentPlayer = "";
   } else {
